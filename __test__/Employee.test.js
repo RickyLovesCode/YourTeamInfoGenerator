@@ -1,8 +1,9 @@
-const inquirer = require('inquirer')
 const Employee = require('../lib/Employee');
 
 test('create employee obj', () => {
-    const Employee = new Employee('');
-
+    const employee = new Employee();
+    expect(typeof (employee)).toBe('object');
 });
+
+
 
