@@ -204,8 +204,23 @@ const promptIntern = () => {
 
 
 
-promptManager()
-    .then(promptEngineer)
-    .then(promptIntern);
+// promptManager()
+//     .then(promptEngineer)
+//     .then(promptIntern);
+
+//
+
+//Create a function to write a file
+function writeToFile(fileName, data) {
+    return fs.writeFileSync(path.join(process.cwd(), fileName), data)
+}
 
 
+//and this function!  is to 'init'ialize the prompts, and user answers, AND TO PRINT THE PAGE!!
+function init() {
+    inquirer.prompt(questions)
+        .then(userAnswers => {
+            console.log('creating your README now')
+            writeToFile('NewReadme.md', generateMarkdown({ ...userAnswers }))
+        })
+}
